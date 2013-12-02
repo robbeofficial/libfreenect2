@@ -45,6 +45,12 @@ This will enumerate the Kinect sensor again and it will pick up the K4W2 SDK dri
 
 You can go back and forth between the SDK driver and the libusbK driver very quickly and easily with these steps.
 
+==== Linux
+
+It is not yet confirmed if this is a proper solution! The code runs and makes the kinect light up, but it's not clear if this version of libusb (libusbx 1.0.16) works as intended:
+
+sudo apt-get install libncurses5-dev libusb-1.0-0-dev
+
 ==== Other operating systems
 
 I'm not sure, but look for libusbx installation instructions for your OS. Figure out how to attach the driver to the Xbox NUI Sensor composite parent device, VID 045E PID 02C4, then contribute your procedure.
@@ -60,6 +66,14 @@ Make sure you install the driver as describe above first.
 2. Open the .sln file from ./build/msvc for your version of Visual Studio.
 3. Confirm the platform configuration has x64 selected
 4. Build and run.
+
+==== Linux
+
+Currently there is only a provisional makefile for the protonect example. You can test it using:
+
+cd examples/protonect
+make
+sudo ./Protonect
 
 ==== Other platforms
 

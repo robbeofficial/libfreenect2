@@ -26,7 +26,12 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#ifdef linux
+#include <ncurses.h>
+#include <string.h>
+#else
 #include <conio.h>
+#endif
 #include <iostream>
 
 #include "libusb.h"

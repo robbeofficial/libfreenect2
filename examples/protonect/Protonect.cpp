@@ -196,6 +196,7 @@ int KSendCommandReadResponse(libusb_device_handle *handle, cmd_header& cmd, int 
 		if (r == K_RESPONSE_DATA)
 		{
 			printf("Received cmd data %#04x (%#x), length: %u\n", cmd.command, cmd.parameter, completedBytes);
+
 		}
 		else if (r == K_RESPONSE_COMPLETE)
 		{
@@ -211,7 +212,8 @@ int KSendCommandReadResponse(libusb_device_handle *handle, cmd_header& cmd, int 
 
 	//Read expected response complete
 	uint8_t responseData[512];
-	r = KReadCommandResponse(handle, cmd, 512, responseData, transferred);
+	int transferredComplete;
+	r = KReadCommandResponse(handle, cmd, 512, responseData, &transferredComplete);
 
 	if (r == K_RESPONSE_COMPLETE)
 	{
